@@ -1,0 +1,415 @@
+:root {
+  --bg: #08111f;
+  --bg-alt: #101f35;
+  --panel: rgba(12, 24, 45, 0.72);
+  --panel-solid: #0f1c32;
+  --text: #eff6ff;
+  --muted: #9bb0d1;
+  --accent: #66f2ff;
+  --accent-2: #ff6bcb;
+  --accent-3: #ffd166;
+  --line: rgba(255, 255, 255, 0.08);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(102, 242, 255, 0.15), transparent 30%),
+    radial-gradient(circle at top right, rgba(255, 107, 203, 0.14), transparent 32%),
+    linear-gradient(160deg, var(--bg), var(--bg-alt));
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 56px;
+}
+
+.page-shell.neon-mode {
+  --bg: #150516;
+  --bg-alt: #27123f;
+  --panel: rgba(39, 14, 62, 0.72);
+  --panel-solid: #2e1240;
+  --text: #fff4fd;
+  --muted: #d1b8d6;
+  --accent: #88ffb8;
+  --accent-2: #ff7b7b;
+  --accent-3: #ffd36b;
+}
+
+.topbar,
+.hero-grid,
+.game-grid,
+.gameplay-layout,
+.squad-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.topbar {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin-bottom: 44px;
+}
+
+.brand,
+.section-heading,
+.feature-list,
+.game-card,
+.squad-card,
+.score-card,
+.panel-card {
+  display: grid;
+  gap: 10px;
+}
+
+.brand {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #07121d;
+  background: linear-gradient(135deg, var(--accent), var(--accent-3));
+  box-shadow: var(--shadow);
+}
+
+h1,
+h2,
+h3,
+strong {
+  margin: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.77rem;
+  color: var(--accent);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.nav-actions a,
+.secondary-button,
+.button-reset {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.hero-grid {
+  grid-template-columns: 1.35fr 0.9fr;
+  align-items: start;
+}
+
+.hero-copy {
+  padding: 24px 0;
+}
+
+.hero-copy h2 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 0.95;
+  margin: 10px 0 18px;
+  max-width: 11ch;
+}
+
+.hero-text,
+.section-heading p,
+.status-text,
+.game-card p,
+.squad-card p,
+.panel-card p,
+.feature-list,
+.leaderboard-row p,
+.leaderboard-meta span {
+  color: var(--muted);
+}
+
+.hero-text {
+  max-width: 60ch;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.hero-cta,
+.filter-row,
+.mobile-controls,
+.auth-toggle {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button,
+.filter-button,
+.mobile-controls button,
+.text-input {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 13px 18px;
+  font: inherit;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+button,
+input {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #061019;
+  font-weight: 700;
+  border: none;
+}
+
+.secondary-button,
+.filter-button,
+.mobile-controls button,
+.text-input {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.filter-button:hover,
+.mobile-controls button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.stats-row article,
+.game-card,
+.squad-card,
+.score-card,
+.panel-card,
+.canvas-shell,
+.leaderboard-row {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.stats-row article,
+.game-card,
+.squad-card,
+.panel-card,
+.leaderboard-row {
+  padding: 22px;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.section-block {
+  margin-top: 68px;
+}
+
+.filter-row {
+  margin-bottom: 22px;
+}
+
+.filter-button.active {
+  background: rgba(102, 242, 255, 0.12);
+  border-color: rgba(102, 242, 255, 0.35);
+  color: var(--text);
+}
+
+.game-grid,
+.squad-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tag-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.progress-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.progress-bar {
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-3));
+}
+
+.auth-card,
+.auth-form,
+.signed-in-card,
+.leaderboard-list,
+.leaderboard-meta,
+.game-sidebar {
+  display: grid;
+  gap: 14px;
+}
+
+.text-input {
+  width: 100%;
+  color: var(--text);
+}
+
+.text-input::placeholder {
+  color: var(--muted);
+}
+
+.error-text {
+  color: #ff9494;
+  margin: 0;
+}
+
+.gameplay-layout {
+  grid-template-columns: 1.2fr 0.65fr;
+  align-items: start;
+}
+
+.canvas-shell {
+  padding: 18px;
+}
+
+canvas {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 20px;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.score-card {
+  padding: 18px;
+}
+
+.score-card strong,
+.leaderboard-meta strong {
+  font-size: 2rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mobile-controls {
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.leaderboard-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+
+.button-reset {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 940px) {
+  .hero-grid,
+  .gameplay-layout,
+  .game-grid,
+  .squad-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar,
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 20px, 1180px);
+  }
+
+  .hero-copy h2 {
+    max-width: 100%;
+    font-size: 2.5rem;
+  }
+
+  .leaderboard-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
